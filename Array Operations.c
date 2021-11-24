@@ -1,3 +1,4 @@
+//A Program to perform insertion and deletion in given array
 #include <stdio.h>
 
 int main()
@@ -11,7 +12,7 @@ int main()
     scanf("%d",&no_of_element);
     for(i=0;i<no_of_element;i++)
     {
-        printf("Enter element");
+        printf("Eneter element");
         scanf("%d", &a1[i]);
     }
     
@@ -19,7 +20,7 @@ int main()
     {
     
         //print Menu Options
-        printf("Enter your choice\n 1. Insertion \n 2. Deletion with Postion \n 3. Deletion with Element \n 4. Display \n");
+        printf("Enter your choice\n 1. Insertion \n 2. Deletion with Postion \n 3. Deletion with Element \n 4. Display");
         scanf("%d", &choice);
         
         //printf("%d",no_of_element);
@@ -31,7 +32,13 @@ int main()
             {
                 printf("Enter element to be inserted");
                 scanf("%d", &element);
-                a1[no_of_element]=element;
+                printf("Enter position");
+                scanf("%d",&pos);
+                for(i=no_of_element-1;i>=pos-1;i--)
+                {
+                    a1[i+1]=a1[i];
+                }
+                a1[pos-1]=element;
                 no_of_element+=1; //increase array size by 1
                 printf("Elements: %d", no_of_element);
             }
@@ -43,13 +50,8 @@ int main()
         
             //Deletion_A
             case 2:
-             if(no_of_element==0)
-             {
-               printf("ARRAY IS EMPTY (UNDERFLOW)");
-             }
-             else
-             {
-                
+            if(no_of_element!=0)
+            {
                 printf("Enter position of element to be deleted");
                 scanf("%d",&pos);
                 for(i=pos-1;i<no_of_element;i++)
@@ -57,6 +59,10 @@ int main()
                     a1[i]=a1[i+1];
                 }
                 no_of_element--;   //decrease size by 1
+            }
+            else
+            {
+                printf("ARRAY IS EMPTY (UNDERFLOW)");
             }    
             break;
             //Deletion_B (delete first entry only)
@@ -93,7 +99,7 @@ int main()
             break;
             case 4:
                 //printing state of array
-                printf("\nCurrent state of array ");
+                printf("\nCurrent state of array");
                 for(i=0;i<no_of_element;i++)
                 {
                     printf("%d \t", a1[i]);
@@ -102,8 +108,10 @@ int main()
             default:
                 printf("\nNot a valid Option");
         }
-        printf("\nDo you want to perform some more operations (y/n)?");
+        printf("Do you want to perform some more operations (y/n)?");
         scanf("%s", &con);
     }while(con=='Y' || con == 'y');
     return 0;
 }
+/*Note= This code may work on some system and some not in order to run it you can just comment Line number 111,112 and empty the while loop.
+This results the code looping to infinite times it can be terminated then by putting another conditions like fixing the number of operations.*/
