@@ -40,3 +40,4 @@ void main()
      sum=0;
    }
 }
+Note: This code has been already present with the name array sun in this code I have just updated the display part of the matrix before it's calculation for easy understandability that how the rows and columns are made in 2-D array in the form of matrix.
